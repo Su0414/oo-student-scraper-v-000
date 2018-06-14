@@ -36,6 +36,7 @@ class Scraper
 
     # doc = div.social-icon-container a
     scraped_student = {}
+<<<<<<< HEAD
     #binding.pry
 
     doc.css("div.social-icon-container a").each do |links|
@@ -52,6 +53,21 @@ class Scraper
     scraped_student[:bio] = doc.css("div.bio-content .description-holder p").text
 
     scraped_student
+=======
+    binding.pry
+
+    doc.css("div.social-icon-container a").each do |links|
+        link = links.attribute("href").text
+      scraped_student[:twitter] = link.include?("twitter")
+      scraped_student[:linkedin] = link.include?("linkedin")
+      scraped_student[:github] = link.include?("github")
+      scraped_student[:blog] = link.include?("blog")
+
+    end
+
+    scraped_student[:profile_quote] = doc.css("profile_quote").text
+    scraped_student[:bio] = doc.css("bio-content description-holder").text
+>>>>>>> 0c268707d5e46904ad455c3d84a466e3e113cc9a
   end
 
 end
